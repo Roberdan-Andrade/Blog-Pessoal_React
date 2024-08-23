@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom"
+
 function Navbar() {
 
     return (
         <>
             <div className='w-full bg-indigo-900 text-white flex justify-center py-4'>
                 <div className="container flex justify-between text-xl">
-                    <div className='text-3xl font-bold uppercase px-8'>Blog Pessoal</div>
+                    <Link to='/Home' className='text-3xl font-bold uppercase px-8'>Blog Pessoal</Link>
 
                     <div className='flex gap-4 px-4'>
                         <div className='hover:underline'>Postagens</div>
