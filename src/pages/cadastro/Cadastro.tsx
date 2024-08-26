@@ -27,42 +27,42 @@ function Cadastro() {
 
    //UseEffect que monitora o estado do usuario
    useEffect(() => {
-      if(usuario.id !== 0){
+      if (usuario.id !== 0) {
          retornar()
       }
    }, [usuario])
 
-   function retornar(){
+   function retornar() {
       navigate('/login')
    }
 
    //Função que atualiza as propriedades do estado usuario
-   function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
+   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
       setUsuario({
          ...usuario,
-         [e.target.name] : e.target.value
+         [e.target.name]: e.target.value
       })
    }
 
-   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>){
+   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
       setConfirmaSenha(e.target.value)
    }
 
    async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
       e.preventDefault()
 
-      if(confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
+      if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
          setIsLoading(true)
 
-         try{
+         try {
             await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
             alert("Usuario cadastrado com sucesso!")
-         } catch(error){
+         } catch (error) {
             alert("Erro ao cadastrar usuario")
          }
       } else {
          alert("Dados inconsistentes! Verifique a informaçoes do cadastro!")
-         setUsuario({...usuario, senha: ""})
+         setUsuario({ ...usuario, senha: "" })
          setConfirmaSenha("")
       }
 
@@ -136,12 +136,12 @@ function Cadastro() {
                   />
                </div>
                <div className="flex justify-around w-full gap-8">
-                  <button className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2 flex justify-center' >
+                  <button className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2 flex justify-center' onClick={retornar}>
                      Cancelar
                   </button>
                   <button className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2 flex justify-center' type='submit'>
-                     {isLoading ? <RotatingLines strokeColor="white"strokeWidth="5"animationDuration="0.75"width="24"visible={true}/> :
-                    <span>Cadastrar</span>}
+                     {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> :
+                        <span>Cadastrar</span>}
                   </button>
                </div>
             </form>
