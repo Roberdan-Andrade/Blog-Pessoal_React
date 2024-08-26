@@ -1,0 +1,8 @@
+.fundoCadastro {
+    background-image: url(https://ik.imagekit.io/Roberdan42/Capas_Jogos/Imagem_Default.png?updatedAt=1722014269945);
+      background-repeat: no-repeat;
+      width: 100%;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+  }
