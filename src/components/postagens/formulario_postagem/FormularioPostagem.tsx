@@ -6,7 +6,7 @@ import Tema from "../../../models/Tema";
 import Postagem from "../../../models/Postagem";
 
 function FormularioPostagem() {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
   
     const { id } = useParams<{ id: string }>();
   
@@ -20,14 +20,7 @@ function FormularioPostagem() {
       descricao: '',
     });
   
-    const [postagem, setPostagem] = useState<Postagem>({
-      id: 0,
-      titulo: '',
-      texto: '',
-      data: '',
-      tema: null,
-      usuario: null,
-    });
+    const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
   
     async function buscarPostagemPorId(id: string) {
       await buscar(`/postagens/${id}`, setPostagem, {
@@ -151,6 +144,7 @@ function FormularioPostagem() {
               className="border-2 border-slate-700 rounded p-2"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <label htmlFor="titulo">Texto da postagem</label>
             <input
@@ -163,6 +157,7 @@ function FormularioPostagem() {
               className="border-2 border-slate-700 rounded p-2"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <p>Tema da postagem</p>
             <select name="tema" id="tema" className='border p-2 border-slate-800 rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
