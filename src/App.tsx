@@ -9,6 +9,7 @@ import ListaTemas from "./components/temas/lista_temas/ListaTemas"
 import FormularioTema from "./components/temas/formulario_tema/FormularioTema"
 import DeletarTema from "./components/temas/deletar_tema/DeletarTema"
 import ListaPostagens from "./components/postagens/lista_postagens/ListaPostagens"
+import FormularioPostagem from "./components/postagens/formulario_postagem/FormularioPostagem"
 
 function App() {
     //Codigo Typescript
@@ -30,6 +31,8 @@ function App() {
                             <Route path="/editarTema/:id" element={<FormularioTema />} />
                             <Route path="/deletarTema/:id" element={<DeletarTema />} />
                             <Route path="/postagens" element={<ListaPostagens />} />
+                            <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
+                            <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
                         </Routes>
                     </div>
                     <Footer />
