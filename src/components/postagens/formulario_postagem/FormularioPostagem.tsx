@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { atualizar, buscar, cadastrar } from "../../../services/service";
-import AuthContext from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import Tema from "../../../models/Tema";
 import Postagem from "../../../models/Postagem";
 
@@ -104,7 +104,7 @@ function FormularioPostagem() {
           alert('Postagem atualizada com sucesso');
           retornar();
         } catch (error: any) {
-          if (error.toString().includes('403')) {
+          if (error.toString().includes('401')) {
             alert('O token expirou, favor logar novamente')
             handleLogout()
           } else {
@@ -122,7 +122,7 @@ function FormularioPostagem() {
           alert('Postagem cadastrada com sucesso');
           retornar();
         } catch (error: any) {
-          if (error.toString().includes('403')) {
+          if (error.toString().includes('401')) {
             alert('O token expirou, favor logar novamente')
             handleLogout()
           } else {
