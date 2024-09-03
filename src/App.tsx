@@ -11,6 +11,7 @@ import DeletarTema from "./components/temas/deletar_tema/DeletarTema"
 import ListaPostagens from "./components/postagens/lista_postagens/ListaPostagens"
 import FormularioPostagem from "./components/postagens/formulario_postagem/FormularioPostagem"
 import DeletarPostagem from "./components/postagens/deletar_postagem/DeletarPostagem"
+import Perfil from "./pages/perfil/Perfil"
 
 function App() {
     //Codigo Typescript
@@ -35,6 +36,7 @@ function App() {
                             <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
                             <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
                             <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+                            <Route path="/perfil" element={<Perfil />} />
                         </Routes>
                     </div>
                     <Footer />
