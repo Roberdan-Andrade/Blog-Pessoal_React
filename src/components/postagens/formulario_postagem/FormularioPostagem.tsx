@@ -4,6 +4,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/service";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Tema from "../../../models/Tema";
 import Postagem from "../../../models/Postagem";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormularioPostagem() {
     const navigate = useNavigate();
@@ -56,7 +57,7 @@ function FormularioPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            ToastAlerta('Você precisa estar logado', "Info");
             navigate('/');
         }
     }, [token]);
@@ -102,14 +103,14 @@ function FormularioPostagem() {
                         Authorization: token,
                     },
                 });
-                alert('Postagem atualizada com sucesso');
+                ToastAlerta('Postagem atualizada com sucesso', "Sucesso");
                 retornar();
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert('O token expirou, favor logar novamente')
+                    ToastAlerta('O token expirou, favor logar novamente', "Info")
                     handleLogout()
                 } else {
-                    alert('Erro ao atualizar a Postagem');
+                    ToastAlerta('Erro ao atualizar a Postagem', "Erro");
                 }
             }
         } else {
@@ -120,14 +121,14 @@ function FormularioPostagem() {
                     },
                 });
 
-                alert('Postagem cadastrada com sucesso');
+                ToastAlerta('Postagem cadastrada com sucesso', "Sucesso");
                 retornar();
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert('O token expirou, favor logar novamente')
+                    ToastAlerta('O token expirou, favor logar novamente', "Info")
                     handleLogout()
                 } else {
-                    alert('Erro ao cadastrar a Postagem');
+                    ToastAlerta('Erro ao cadastrar a Postagem', "Erro");
                 }
             }
         }
